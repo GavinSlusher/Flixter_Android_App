@@ -2,5 +2,10 @@
 <resources>
     <color name="colorPrimary">#3b4252</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#D8DEE9</color>
+    <color name="backgroundColor">#2E3440</color>
+    <color name="titleColor">#88C0D0</color>
+    <color name="textColor">#D8DEE9</color>
+    <color name="mutedText">#4C566A</color>
+    <color name="secondaryText">#81A1C1</color>
+    <color name="colorAccent">#4C566A</color>
 </resources>

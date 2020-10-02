@@ -19,7 +19,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.parceler.Parcels;
 
+import java.util.Date;
+
 import okhttp3.Headers;
+
+import static java.lang.String.valueOf;
 
 public class DetailActivity extends YouTubeBaseActivity {
 
@@ -30,6 +34,9 @@ public class DetailActivity extends YouTubeBaseActivity {
     TextView tvTitle;
     TextView tvOVerview;
     RatingBar ratingBar;
+    TextView releaseDate;
+    int voteCount;
+    TextView voteString;
     YouTubePlayerView youTubePlayerView;
 
     @Override
@@ -41,12 +48,17 @@ public class DetailActivity extends YouTubeBaseActivity {
         tvOVerview = findViewById(R.id.tvOverview);
         ratingBar = findViewById(R.id.ratingBar);
         youTubePlayerView = findViewById(R.id.player);
+        releaseDate = findViewById(R.id.tvDate);
+        voteString = findViewById(R.id.tvVoteCount);
 
 //        Get data passed to the activity
         Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
         tvTitle.setText(movie.getTitle());
         tvOVerview.setText(movie.getOverview());
         ratingBar.setRating((float)movie.getRating());
+        releaseDate.setText("Release date: " + movie.getReleaseDate());
+        voteString.setText("Based on " + valueOf(movie.getVoteCount() + " votes"));
+
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(String.format(VIDEOS_URL, movie.getMovieId()), new JsonHttpResponseHandler() {
