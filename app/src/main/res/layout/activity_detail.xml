@@ -22,6 +22,7 @@
         android:textAlignment="center"
         android:textColor="@color/titleColor"
         android:textSize="30sp"
+        android:transitionName="textTransition"
         tools:text="Mulan" />
 
     <RatingBar
