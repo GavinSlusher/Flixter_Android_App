@@ -48,4 +48,19 @@ dependencies {
 //    Required to make parcelables in android
     implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
+
+    // Required to hide API keys
+    def apikeyPropertiesFile = rootProject.file("apikey.properties")
+    def apikeyProperties = new Properties()
+    apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
+    android {
+
+        defaultConfig {
+
+            // should correspond to key/value pairs inside the file
+            buildConfigField("String", "CONSUMER_KEY", apikeyProperties['CONSUMER_KEY'])
+            buildConfigField("String", "CONSUMER_SECRET", apikeyProperties['CONSUMER_SECRET'])
+        }
+    }
 }
